@@ -1,0 +1,41 @@
+<div class="container">
+
+    <div class="row top">
+
+        <div class="col-md-6">
+            <p>Filtrer :</p>
+            <div ng-repeat="tag in tags" class="checkbox">
+              <label><input ng-click="filter(tag.tag)" type="checkbox" value="{{tag.tag}}">{{tag.tag}}</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+                
+            <input type="text" ng-model="selected" uib-typeahead="produit.descriptif for produit in produits | filter:$viewValue | limitTo:8" class="form-control">
+           
+
+        </div>
+    </div>
+
+
+    <!-- <div ke-produits datas="produits"></div> -->
+    <div ng-repeat="produit in produits" class="row spacer">
+        <div class="col-md-2">
+            <img src="{{produit.media[0]}}" class="img-responsive img-rounded" >
+        </div>
+        <div class="col-md-6">
+            <h3>{{produit.descriptif}}</h3>
+            <p>
+                <button ng-repeat="tag in produit.tags" type="button" class="btn btn-info" style="margin-right:10px;">{{tag.tag}}</button>
+            </p>
+        </div>
+        <div class="col-md-2">
+            <p>{{produit.price|currency:"EUR€"}}</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{produit.weight|weight:'kgs'}}</p>
+            <p><a href="">en savoir plus</a></p>
+        </div>
+
+    </div>
+  
+</div>
